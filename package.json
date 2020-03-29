@@ -1,14 +1,10 @@
 {
-  "name": "functions",
-  "description": "Cloud Functions for Firebase",
+  "name": "lpcovid-backend",
+  "description": "Backend for LPCOVID Project",
   "scripts": {
     "lint": "eslint .",
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
     "server": "nodemon app",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "start": "node app"
   },
   "dependencies": {
     "@sendgrid/mail": "^6.5.5",
@@ -17,7 +13,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
-    "firebase-functions": "^3.3.0"
   },
   "devDependencies": {
     "eslint": "^5.12.0",

@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 
-const port = 8201;
+const port = process.env.PORT || 3421;
 
 app.get('/api/products', (req, res) => {
   console.log("Recevied request")
