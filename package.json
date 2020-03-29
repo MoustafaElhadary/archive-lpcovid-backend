@@ -6,6 +6,7 @@
     "server": "nodemon app",
     "start": "node app"
   },
+  "main": "app.js",
   "dependencies": {
     "@sendgrid/mail": "^6.5.5",
     "body-parser": "^1.19.0",
