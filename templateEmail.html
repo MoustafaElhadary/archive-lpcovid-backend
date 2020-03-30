@@ -1,64 +1,4 @@
-const path = require("path");
-const express = require("express");
-const cors = require("cors");
-const sgMail = require("@sendgrid/mail");
-require("dotenv/config");
-var bodyParser = require("body-parser");
-
-const utils = require("./utils")
-
-
-const port = process.env.PORT || 3421;
-
-const app = express();
-app.use(cors());
-app.options("*", cors());
-app.use(
-  bodyParser.urlencoded({
-    extended: true
-  })
-);
-app.use(bodyParser.json());
-
-app.get("/api/products", (req, res) => {
-  console.log("Recevied request");
-  res.sendFile(path.join(__dirname, "data", "products.json"));
-});
-
-app.listen(port, () => {
-  console.log(`[products] API listening on port ${port}.`);
-});
-
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-app.post("/api/email", (req, res, next) => {
-  console.log(req.body);
-  var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
-var products = ""
-req.body.cartProducts.map(cp => {
-
-  var total = cp.quantity * cp.price;
-  products+=`
- 
-  <tr>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px;">
-                                    <img src="${cp.mainImage}" alt="" height="50">
-                                </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px;">${cp.title}</td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${utils.numberWithCommas(cp.quantity)}
-                                </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">$${utils.formatPrice(cp.price)}
-                                </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">$${utils.formatPrice(total)}
-                                </td>
-                            </tr>
-  `
-})
-
-  var html = `
-  <html>
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -83,7 +23,9 @@ req.body.cartProducts.map(cp => {
                             <img src="https://www.logisticsplus.net/wp-content/themes/LogisticsPlus/library/images/logistics_plus.png"
                                 height="50" alt="logo" />
                         </span>
-                        
+                        <strong style="float: right; font-size: 13px; padding-right: 20px; line-height: 25px;">
+                            PO Requested By ${req.body.fullName}
+                        </strong>
                     </h1>
                     <strong style="float: right; font-size: 13px; padding-right: 20px; line-height: 25px;"></strong>
                 </td>
@@ -110,11 +52,7 @@ req.body.cartProducts.map(cp => {
                                     <table style="border: 0;">
                                         <tbody>
                                             <tr>
-                                                <td><strong>Company:</strong> ${req.body.company}  ${req.body.website}</td>
-                                            </tr>
-                                            
-                                            <tr>
-                                                <td><strong>Email:</strong> ${req.body.email}</td>
+                                                <td><strong>Company:</strong> ${req.body.company}</td>
                                             </tr>
 
                                         </tbody>
@@ -152,17 +90,30 @@ req.body.cartProducts.map(cp => {
                                     </h2>
                                     <table style="width: 100%; border: 0; vertical-align: top;">
                                         <tbody>
-                                        <tr style="word-break: break-word;">
-                                        <td>${req.body.billing_streetAddress}</td>
-                                    </tr>
-                                    <tr style="word-break: break-word;">
-                                        <td>${req.body.billing_address_city}, ${req.body.billing_address_state},
-                                            ${req.body.billing_address_zip}, ${req.body.billing_address_country}</td>
-                                    </tr>
-                                    
-                                    <tr style="word-break: break-all;">
-                                        <td>${req.body.billing_phone}</td>
-                                    </tr>
+                                            <!-- <tr style="word-break: break-word;">
+												<td>[#BillingName#]</td>
+											</tr>
+											<tr style="word-break: break-word;">
+												<td>[#BillingAddress1#]</td>
+											</tr>
+											<tr style="word-break: break-word;">
+												<td>[#BillingCity#]</td>
+											</tr>
+											<tr style="word-break: break-word;">
+												<td>[#BillingState#]</td>
+											</tr>
+											<tr style="word-break: break-all;">
+												<td>[#BillingPostalCode#]</td>
+											</tr>
+											<tr style="word-break: break-word;">
+												<td>[#BillingCountry#]</td>
+											</tr>
+											<tr style="word-break: break-all;">
+												<td>[#BillingEmail#]</td>
+											</tr>
+											<tr style="word-break: break-all;">
+												<td>[#BillingPhone#]</td>
+											</tr> -->
                                         </tbody>
                                     </table>
                                 </td>
@@ -174,15 +125,17 @@ req.body.cartProducts.map(cp => {
                                     <table style="width: 100%; border: 0; vertical-align: top;">
                                         <tbody>
                                             <tr style="word-break: break-word;">
-                                                <td>${req.body.shipping_streetAddress}</td>
+                                                <td>${req.body.streetAddress}</td>
                                             </tr>
                                             <tr style="word-break: break-word;">
-                                                <td>${req.body.shipping_address_city}, ${req.body.shipping_address_state},
-                                                    ${req.body.shipping_address_zip}, ${req.body.shipping_address_country}</td>
+                                                <td>${req.body.address_city}, ${req.body.address_state},
+                                                    ${req.body.address_zip}, ${req.body.address_country}</td>
                                             </tr>
-                                            
                                             <tr style="word-break: break-all;">
-                                                <td>${req.body.shipping_phone}</td>
+                                                <td>${req.body.email}</td>
+                                            </tr>
+                                            <tr style="word-break: break-all;">
+                                                <td>${req.body.phone}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -209,6 +162,8 @@ req.body.cartProducts.map(cp => {
                             <tr>
                                 <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;">Image</th>
                                 <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;">Item</th>
+                                <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;"> Description
+                                </th>
                                 <th
                                     style="border: 1px solid #ccc; background: #eee; padding: 10px 14px; text-align: right;">
                                     Quantity</th>
@@ -222,24 +177,36 @@ req.body.cartProducts.map(cp => {
                         </thead>
                         <tbody>
 
-                            ${products}
+                            <tr>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px;">
+                                    <img src="${mainImage}" alt="" height="50">
+                                </td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px;">${title}</td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px;">${description}</td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${quantity}
+                                </td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${price}
+                                </td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${quantity * price}
+                                </td>
+                            </tr>
 
                             <tr>
-                            <td colspan="2"
-                                style="border: 1px solid #ccc; border-right: 0; padding: 10px 14px; text-align: right;">
-                                <strong>Total :</strong></td>
-                            <td
-                                style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px; text-align: right;">
-                                <strong style="color: #3181DF">${utils.numberWithCommas(req.body.cartTotal.productQuantity)}</strong>
-                            </td>
-                            <td
-                                style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px;">
-                                &nbsp;</td>
-                            <td colspan="2"
-                                style="border: 1px solid #ccc; border-left: 0; padding: 10px 14px; text-align: right;">
-                                <strong style="color: #3181DF">$${utils.formatPrice(req.body.cartTotal.totalPrice)}</strong>
-                            </td>
-                        </tr>
+                                <td colspan="3"
+                                    style="border: 1px solid #ccc; border-right: 0; padding: 10px 14px; text-align: right;">
+                                    <strong>Total $:</strong></td>
+                                <td
+                                    style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px; text-align: right;">
+                                    <strong style="color: #3181DF">${req.body.productQuantity}</strong>
+                                </td>
+                                <td
+                                    style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px;">
+                                    &nbsp;</td>
+                                <td colspan="2"
+                                    style="border: 1px solid #ccc; border-left: 0; padding: 10px 14px; text-align: right;">
+                                    <strong style="color: #3181DF">${req.body.totalPrice}</strong>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </td>
@@ -275,14 +242,3 @@ req.body.cartProducts.map(cp => {
 </body>
 
 </html>
-  `
-  const msg = {
-    to: req.body.email,
-    from: "lpcovid19@logisticsplus.net",
-    subject: "Purchase Order with Logistics Plus",
-    html: html
-  };
-  
-  sgMail.send(msg);
-  res.json(msg);
-});
