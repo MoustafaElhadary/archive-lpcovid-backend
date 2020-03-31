@@ -121,7 +121,7 @@ app.post("/api/email", (req, res, next) => {
                                             <tr>
                                                 <td><strong>Company:</strong> ${
                                                   req.body.company
-                                                }  ${req.body.website}</td>
+                                                }  ${req.body.website} </td>
                                             </tr>
                                             
                                             <tr>
@@ -137,7 +137,7 @@ app.post("/api/email", (req, res, next) => {
                                     <table style="border: 0;">
                                         <tbody>
                                             <tr>
-                                                <td><strong>DATE ISSUED:</strong> ${dateRequested}</td>
+                                                <td><strong>DATE ISSUED:</strong> ${req.body.dateRequested}</td>
                                             </tr>
                                         </tbody>
                                     </table>
