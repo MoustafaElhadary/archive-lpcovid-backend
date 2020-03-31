@@ -137,7 +137,7 @@ app.post("/api/email", (req, res, next) => {
                                     <table style="border: 0;">
                                         <tbody>
                                             <tr>
-                                                <td><strong>DATE ISSUED:</strong> ${req.body.dateRequested}</td>
+                                                <td><strong>DATE ISSUED:</strong> ${date}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -333,6 +333,6 @@ app.post("/api/email", (req, res, next) => {
     html: html
   };
 
-  sgMail.send(msg);
+  //sgMail.send(msg);
   res.json(msg);
 });
