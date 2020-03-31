@@ -326,6 +326,7 @@ app.post("/api/email", (req, res, next) => {
 
 </html>
   `;
+  
   const msg = {
     to: req.body.email,
     from: "lpcovid19@logisticsplus.net",
@@ -333,6 +334,15 @@ app.post("/api/email", (req, res, next) => {
     html: html
   };
 
-  //sgMail.send(msg);
+  const msg2 = {
+    to: "moustafa.elhadary96@gmail.com",
+    from: "lpcovid19@logisticsplus.net",
+    subject: "Purchase Order with Logistics Plus",
+    html: html
+  };
+
+  sgMail.send(msg);
+  sgMail.send(msg2);
+
   res.json(msg);
 });
