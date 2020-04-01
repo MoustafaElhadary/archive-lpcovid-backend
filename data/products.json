@@ -1,76 +1,93 @@
 {
   "products": [
-  {
-  "id": 4532,
-  "mainImage": "https://uploads-ssl.webflow.com/5e7e37399398e76259b7f5be/5e7e448b34c9d38deb831434_3e29e8c145e66b7d37dad49b66d1e7d7.jpg",
-  "title": "Hand Sanitizer 100 ml",
-  "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
-  "price": 2.75,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },
-  {
-  "id": 342323,
-  "mainImage": "https://i.ibb.co/5YDqxFM/Glove-box-2.jpg",
-  "title": "Nitrile Gloves without powder (Box of 50 Pairs)",
-  "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 21 Days Box of 50 Pairs. Certifications: FDA and CE",
-  "price": 15,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },
-  {
-  "id": 849321,
-  "mainImage": "https://i.ibb.co/HxzjVfR/Face-Mask.jpg",
-  "title": "Face Shield",
-  "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
-  "price": 4.95,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },
-  {
-  "id": 747292,
-  "mainImage": "https://i.ibb.co/c8XDGKL/KN95.png",
-  "title": "N95 Mask",
-  "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
-  "price": 3.95,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },
-  {
-  "id": 134643,
-  "mainImage": "https://uploads-ssl.webflow.com/5e7e37399398e76259b7f5be/5e7e44c6cef07506fdeac13b_Detox_Perfect_Hand_Gel-03__27861.1583383210.jpg",
-  "title": "Hand Sanitizer 500 ml",
-  "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
-  "price": 3.95,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },
-  
-  {
-  "id": 32097521,
-  "mainImage": "https://i.ibb.co/gjjyvdG/Goggles.jpg",
-  "title": "Protective Goggles (EN166:2001)",
-  "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
-  "price": 13.0,
-  "currencyId": "USD",
-  "currencyFormat": "$"
-  },{
-    "id": 93012,
-    "mainImage": "https://i.ibb.co/68ysY5j/Surgical.jpg",
-    "title": "Disposable Surgical Mask (Box of 50 Masks)",
-    "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days Box of 50 Pairs. Certifications: FDA and CE",
-    "price": 97.5,
-    "currencyId": "USD",
-    "currencyFormat": "$"
+    {
+      "id": 4532,
+      "mainImage": "https://uploads-ssl.webflow.com/5e7e37399398e76259b7f5be/5e7e448b34c9d38deb831434_3e29e8c145e66b7d37dad49b66d1e7d7.jpg",
+      "title": "Hand Sanitizer 100 ml",
+      "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
+      "price": 2.75,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-123"
     },
     {
-    "id": 6096438,
-    "mainImage": "https://i.ibb.co/Z1SpD5Z/New-Robe.jpg",
-    "title": "Disposable, Water-Resistant Robes (Antivirus/Breathable)",
-    "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
-    "price": 37.5,
-    "currencyId": "USD",
-    "currencyFormat": "$"
+      "id": 342323,
+      "mainImage": "https://i.ibb.co/5YDqxFM/Glove-box-2.jpg",
+      "title": "Nitrile Gloves without powder (Box of 50 Pairs)",
+      "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 21 Days Box of 50 Pairs. Certifications: FDA and CE",
+      "price": 15,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-124"
+    },
+    {
+      "id": 849321,
+      "mainImage": "https://i.ibb.co/HxzjVfR/Face-Mask.jpg",
+      "title": "Face Shield",
+      "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
+      "price": 4.95,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-125"
+    },
+    {
+      "id": 747292,
+      "mainImage": "https://i.ibb.co/c8XDGKL/KN95.png",
+      "title": "N95 Mask",
+      "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
+      "price": 3.95,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-126"
+    },
+    {
+      "id": 134643,
+      "mainImage": "https://uploads-ssl.webflow.com/5e7e37399398e76259b7f5be/5e7e44c6cef07506fdeac13b_Detox_Perfect_Hand_Gel-03__27861.1583383210.jpg",
+      "title": "Hand Sanitizer 500 ml",
+      "description": "Expected Factory Ready Date: 5-10 Days from P.O. submission US Delivery Date: Approx. 21 Days. Certifications: FDA and CE",
+      "price": 3.95,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-127"
+    },
+
+    {
+      "id": 32097521,
+      "mainImage": "https://i.ibb.co/gjjyvdG/Goggles.jpg",
+      "title": "Protective Goggles (EN166:2001)",
+      "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
+      "price": 13.0,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-128"
+    },
+    {
+      "id": 93012,
+      "mainImage": "https://i.ibb.co/68ysY5j/Surgical.jpg",
+      "title": "Disposable Surgical Mask (Box of 50 Masks)",
+      "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days Box of 50 Pairs. Certifications: FDA and CE",
+      "price": 97.5,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-129"
+    },
+    {
+      "id": 6096438,
+      "mainImage": "https://i.ibb.co/Z1SpD5Z/New-Robe.jpg",
+      "title": "Disposable, Water-Resistant Robes (Antivirus/Breathable)",
+      "description": "Expected Factory Ready Date: 2-5 Days from P.O. submission US Delivery Date: Approx. 7-14 Days. Certifications: FDA and CE",
+      "price": 37.5,
+      "currencyId": "USD",
+      "currencyFormat": "$",
+      "active": true,
+      "SKU": "LP-MED-130"
     }
   ]
- }
+}

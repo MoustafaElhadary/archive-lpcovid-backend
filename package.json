@@ -3,8 +3,8 @@
   "description": "Backend for LPCOVID Project",
   "scripts": {
     "lint": "eslint .",
-    "server": "nodemon app",
-    "start": "node app"
+    "server": "nodemon server",
+    "start": "node server"
   },
   "main": "app.js",
   "dependencies": {
@@ -13,15 +13,14 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "firebase-admin": "^8.6.0"
+    "firebase-admin": "^8.6.0",
+    "google-spreadsheet": "^3.0.10",
+    "googleapis": "39"
   },
   "devDependencies": {
     "eslint": "^5.12.0",
     "eslint-plugin-promise": "^4.0.1",
     "firebase-functions-test": "^0.1.6"
-  },
-  "engines": {
-    "node": "12.x"
   },
   "private": true
 }

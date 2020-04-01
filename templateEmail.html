@@ -23,9 +23,7 @@
                             <img src="https://www.logisticsplus.net/wp-content/themes/LogisticsPlus/library/images/logistics_plus.png"
                                 height="50" alt="logo" />
                         </span>
-                        <strong style="float: right; font-size: 13px; padding-right: 20px; line-height: 25px;">
-                            PO Requested By ${req.body.fullName}
-                        </strong>
+
                     </h1>
                     <strong style="float: right; font-size: 13px; padding-right: 20px; line-height: 25px;"></strong>
                 </td>
@@ -48,21 +46,26 @@
                     <table style="width: 100%; border: 0; vertical-align: top; table-layout: fixed;">
                         <tbody>
                             <tr>
-                                <td style="vertical-align: top;" width="70%">
+                                <td style="vertical-align: top;" width="50%">
                                     <table style="border: 0;">
                                         <tbody>
                                             <tr>
-                                                <td><strong>Company:</strong> ${req.body.company}</td>
+                                                <td><strong>Company:</strong> [#Company#] </td>
                                             </tr>
-
+                                            <tr>
+                                                <td><strong>Website:</strong> [#Website#]</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </td>
-                                <td style="vertical-align: top;" width="30%">
+                                <td style="vertical-align: top;" width="50%">
                                     <table style="border: 0;">
                                         <tbody>
                                             <tr>
-                                                <td><strong>DATE ISSUED:</strong> ${date}</td>
+                                                <td><strong>DATE ISSUED:</strong> [#Date#]</td>
+                                            </tr>
+                                            <tr>
+                                                <td><strong>Email:</strong> [#Email#]</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -90,34 +93,25 @@
                                     </h2>
                                     <table style="width: 100%; border: 0; vertical-align: top;">
                                         <tbody>
-                                            <!-- <tr style="word-break: break-word;">
-												<td>[#BillingName#]</td>
-											</tr>
-											<tr style="word-break: break-word;">
-												<td>[#BillingAddress1#]</td>
-											</tr>
-											<tr style="word-break: break-word;">
-												<td>[#BillingCity#]</td>
-											</tr>
-											<tr style="word-break: break-word;">
-												<td>[#BillingState#]</td>
-											</tr>
-											<tr style="word-break: break-all;">
-												<td>[#BillingPostalCode#]</td>
-											</tr>
-											<tr style="word-break: break-word;">
-												<td>[#BillingCountry#]</td>
-											</tr>
-											<tr style="word-break: break-all;">
-												<td>[#BillingEmail#]</td>
-											</tr>
-											<tr style="word-break: break-all;">
-												<td>[#BillingPhone#]</td>
-											</tr> -->
+                                            <tr style="word-break: break-word;">
+                                                <td>[#ShippingFullName#]</td>
+                                            </tr>
+                                            <tr style="word-break: break-word;">
+                                                <td>[#ShippingStreetAddress#]</td>
+                                            </tr>
+                                            <tr style="word-break: break-word;">
+                                                <td>[#ShippingStreetCity#],
+                                                    [#ShippingStreetState#],[#ShippingStreetZip#],
+                                                    [#ShippingStreetCountry#]</td>
+                                            </tr>
+
+                                            <tr style="word-break: break-all;">
+                                                <td>[#ShippingPhone#]</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </td>
-                                <td style="vertical-align: top;" width="30%">
+                                <td style="vertical-align: top;" width="50%">
                                     <h2
                                         style="float: left; font-family: Lato, Arial, sans-serif; font-size: 19px; font-weight: bold; color: #3181DF; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 20px;">
                                         SHIP TO
@@ -125,17 +119,18 @@
                                     <table style="width: 100%; border: 0; vertical-align: top;">
                                         <tbody>
                                             <tr style="word-break: break-word;">
-                                                <td>${req.body.streetAddress}</td>
+                                                <td>[#BillingFullName#]</td>
                                             </tr>
                                             <tr style="word-break: break-word;">
-                                                <td>${req.body.address_city}, ${req.body.address_state},
-                                                    ${req.body.address_zip}, ${req.body.address_country}</td>
+                                                <td>[#BillingStreetAddress#]</td>
                                             </tr>
-                                            <tr style="word-break: break-all;">
-                                                <td>${req.body.email}</td>
+                                            <tr style="word-break: break-word;">
+                                                <td>[#BillingStreetCity#], [#BillingStreetState#],[#BillingStreetZip#],
+                                                    [#BillingStreetCountry#]</td>
                                             </tr>
+
                                             <tr style="word-break: break-all;">
-                                                <td>${req.body.phone}</td>
+                                                <td>[#BillingPhone#]</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -162,8 +157,6 @@
                             <tr>
                                 <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;">Image</th>
                                 <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;">Item</th>
-                                <th style="border: 1px solid #ccc; background: #eee; padding: 10px 14px;"> Description
-                                </th>
                                 <th
                                     style="border: 1px solid #ccc; background: #eee; padding: 10px 14px; text-align: right;">
                                     Quantity</th>
@@ -177,34 +170,37 @@
                         </thead>
                         <tbody>
 
+                            [#ProductsWrapperStart#]
                             <tr>
                                 <td style="border: 1px solid #ccc; padding: 10px 14px;">
-                                    <img src="${mainImage}" alt="" height="50">
+                                    <img src="[#itemImage#]" alt="" height="50">
                                 </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px;">${title}</td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px;">${description}</td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${quantity}
+                                <td style="border: 1px solid #ccc; padding: 10px 14px;">[#itemTitle#]</td>
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">
+                                    [#itemQuantity#]
                                 </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${price}
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">
+                                    $[#itemPrice#]
                                 </td>
-                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">${quantity * price}
+                                <td style="border: 1px solid #ccc; padding: 10px 14px; text-align: right;">
+                                    $[#itemTotal#]
                                 </td>
                             </tr>
-
+                            [#ProductsWrapperEnd#]
                             <tr>
-                                <td colspan="3"
+                                <td colspan="2"
                                     style="border: 1px solid #ccc; border-right: 0; padding: 10px 14px; text-align: right;">
-                                    <strong>Total $:</strong></td>
+                                    <strong>Total :</strong></td>
                                 <td
                                     style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px; text-align: right;">
-                                    <strong style="color: #3181DF">${req.body.productQuantity}</strong>
+                                    <strong style="color: #3181DF">[#CartTotalProductQuantity#]</strong>
                                 </td>
                                 <td
                                     style="border: 1px solid #ccc; border-left: 0; border-right: 0; padding: 10px 14px;">
                                     &nbsp;</td>
                                 <td colspan="2"
                                     style="border: 1px solid #ccc; border-left: 0; padding: 10px 14px; text-align: right;">
-                                    <strong style="color: #3181DF">${req.body.totalPrice}</strong>
+                                    <strong style="color: #3181DF">$[#CartTotalProductPrice#]</strong>
                                 </td>
                             </tr>
                         </tbody>
@@ -218,7 +214,12 @@
             </tr>
             <tr>
                 <td style="text-align: left; padding-left: 45px; padding-right: 40px; padding-bottom: 20px;">
-                    if you have any questions please email lpcovid19@logisticsplus.net or call 855-843-7452
+                    To modify or cancel order please email lpcovid19@logisticsplus.net or call 855-843-7452
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; padding-left: 45px; padding-right: 40px; padding-bottom: 20px;">
+                    Thank you for your order. Our associates will contact you shortly.
                 </td>
             </tr>
             <tr>
@@ -231,7 +232,7 @@
                     style="text-align: center; padding-left: 45px; padding-right: 40px; padding-top: 25px; padding-bottom: 25px; border-top: #3081df 8px solid; font-size: 12px;">
                     <p>
                         Copyright &copy; 2020 Logistics Plus, Inc. All rights reserved. |
-                        <a href="[#SiteRoot#]/Public/ToC.aspx">Terms And Conditions</a> | Powered by <a
+                        <a href="https://my.logisticsplus.net/Public/ToC.aspx">Terms And Conditions</a> | Powered by <a
                             href="http://www.logisticsplus.net" target="_blank">Logistics Plus</a>
                     </p>
                 </td>
